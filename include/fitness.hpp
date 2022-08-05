@@ -8,6 +8,10 @@
 class Fitness
 {
 public:
+    static constexpr auto invalid = int{-1};
+    static constexpr auto perfect = int{0};
+
+public:
     virtual ~Fitness() = default;
     virtual auto how_fit(Puzzle* puzzle) const -> int = 0;
 };

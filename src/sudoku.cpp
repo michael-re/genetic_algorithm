@@ -38,11 +38,11 @@ auto Sudoku::write(std::ostream &stream) const -> std::ostream&
         {
             const auto val = m_board[x][y].value;
             stream << ' ' << (val ? as_char(val): ' ');
-            if ((y % 3) == 2) stream << " |";
+            if ((y % subgrid_size) == 2) stream << " |";
         }
 
         stream << '\n';
-        if ((x % 3) == 2) stream << line;
+        if ((x % subgrid_size) == 2) stream << line;
     }
 
     return stream;

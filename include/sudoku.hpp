@@ -20,7 +20,8 @@ public:
             : deterministic(deterministic), value(value) {}
     };
 
-    static constexpr auto board_width = 9;
+    static constexpr auto subgrid_size = int{3};
+    static constexpr auto board_width  = int{9};
     using board = std::array<std::array<Cell, board_width>, board_width>;
 
 public:
