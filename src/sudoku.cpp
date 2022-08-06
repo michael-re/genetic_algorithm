@@ -4,6 +4,11 @@ inline constexpr auto as_char (int  val) -> char { return val + '0'; }
 inline constexpr auto as_digit(char val) -> int  { return val - '0'; }
 inline constexpr auto is_digit(char val) -> int  { return val >= '0' && val <= '9'; }
 
+auto Sudoku::cell(int x, int y) -> Cell&
+{
+    return m_board[x][y];
+}
+
 auto Sudoku::cell(int x, int y) const -> const Cell&
 {
     return m_board[x][y];

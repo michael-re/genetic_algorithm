@@ -25,6 +25,7 @@ public:
     using board = std::array<std::array<Cell, board_width>, board_width>;
 
 public:
+    auto cell(int x, int y)       -> Cell&;
     auto cell(int x, int y) const -> const Cell&;
 
     auto read(std::istream &stream)        -> std::istream& override;
