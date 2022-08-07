@@ -9,7 +9,14 @@
 class PuzzleFactory
 {
 public:
+    explicit PuzzleFactory() = default;
     virtual ~PuzzleFactory() = default;
+
+    PuzzleFactory(PuzzleFactory&& other)      = delete;
+    PuzzleFactory(const PuzzleFactory& other) = delete;
+
+    auto operator=(PuzzleFactory&& other)      -> PuzzleFactory& = delete;
+    auto operator=(const PuzzleFactory& other) -> PuzzleFactory& = delete;
 
     virtual auto create_puzzle(std::istream& stream) const -> Puzzle* = 0;
     virtual auto create_puzzle(Puzzle* puzzle)       const -> Puzzle* = 0;

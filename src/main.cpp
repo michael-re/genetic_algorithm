@@ -1,17 +1,17 @@
 #include <iostream>
 
 #include "sudoku_fitness.hpp"
-#include "sudoku_offspring.hpp"
+#include "sudoku_factory.hpp"
 
 auto main() -> int
 {
-    auto puzzle = (Puzzle*) new Sudoku();
     std::cout << "Enter sudoku puzzle: ";
-    std::cin >> *puzzle;
+
+    auto puzzle = SudokuFactory().create_puzzle(std::cin);
     std::cout << "Puzzle: " << *puzzle << std::endl;
     std::cout << "Fitness: " << SudokuFitness().how_fit(puzzle) << std::endl;
 
-    auto offspring = SudokuOffspring().make_offspring(puzzle);
+    auto offspring = SudokuFactory().create_puzzle(puzzle);
     std::cout << "\nOffspring: " << *offspring << std::endl;
     std::cout << "Fitness: " << SudokuFitness().how_fit(offspring) << std::endl;
 
