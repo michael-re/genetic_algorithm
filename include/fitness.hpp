@@ -13,7 +13,7 @@ public:
 
 public:
     virtual ~Fitness() = default;
-    virtual auto how_fit(Puzzle* puzzle) const -> int = 0;
+    virtual auto how_fit(const Puzzle* const puzzle) const -> int = 0;
 };
 
 #endif // !GA_FITNESS_HPP

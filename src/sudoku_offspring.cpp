@@ -8,7 +8,7 @@ using random_engine = std::mt19937_64;
 using distribution  = std::uniform_int_distribution<int>;
 using chrono_clock  = std::chrono::high_resolution_clock;
 
-auto SudokuOffspring::make_offspring(Puzzle* puzzle) const -> Puzzle*
+auto SudokuOffspring::make_offspring(const Puzzle* const puzzle) const -> Puzzle*
 {
     static auto time_seed             = chrono_clock::now().time_since_epoch().count();
     static auto mutation_probability  = std::int32_t{5};
@@ -17,7 +17,7 @@ auto SudokuOffspring::make_offspring(Puzzle* puzzle) const -> Puzzle*
     static auto random_cell_value     = []() { return distribution(1, Sudoku::board_width)(mutation_generator); };
     static auto random_probability    = []() { return distribution(0, 99)(probability_generator);               };
 
-    auto sudoku    = dynamic_cast<Sudoku*>(puzzle);
+    auto sudoku    = dynamic_cast<const Sudoku*>(puzzle);
     auto offspring = sudoku ? new Sudoku() : nullptr;
     if (!offspring) return offspring; // return nullptr; - can only make sudoku puzzle offspring
 

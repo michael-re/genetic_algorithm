@@ -12,7 +12,7 @@ public:
     ~SudokuFactory();
 
     auto create_puzzle(std::istream& stream) const -> Puzzle* override;
-    auto create_puzzle(Puzzle* puzzle)       const -> Puzzle* override;
+    auto create_puzzle(const Puzzle* const puzzle)       const -> Puzzle* override;
 };
 
 #endif // !GA_SUDOKU_FACTORY_HPP

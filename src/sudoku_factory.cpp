@@ -21,7 +21,7 @@ auto SudokuFactory::create_puzzle(std::istream& stream) const -> Puzzle*
     return puzzle;
 }
 
-auto SudokuFactory::create_puzzle(Puzzle* puzzle) const -> Puzzle*
+auto SudokuFactory::create_puzzle(const Puzzle* const puzzle) const -> Puzzle*
 {
     return m_offspring->make_offspring(puzzle);
 }

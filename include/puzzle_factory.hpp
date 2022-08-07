@@ -18,8 +18,8 @@ public:
     auto operator=(PuzzleFactory&& other)      -> PuzzleFactory& = delete;
     auto operator=(const PuzzleFactory& other) -> PuzzleFactory& = delete;
 
-    virtual auto create_puzzle(std::istream& stream) const -> Puzzle* = 0;
-    virtual auto create_puzzle(Puzzle* puzzle)       const -> Puzzle* = 0;
+    virtual auto create_puzzle(std::istream& stream)       const -> Puzzle* = 0;
+    virtual auto create_puzzle(const Puzzle* const puzzle) const -> Puzzle* = 0;
 
 protected:
     Offspring* m_offspring = nullptr;

@@ -9,7 +9,7 @@
 class SudokuFitness : public Fitness
 {
 public:
-    auto how_fit(Puzzle* puzzle) const -> int override;
+    auto how_fit(const Puzzle* const puzzle) const -> int override;
 
 private:
     static auto row_fitness(const Sudoku& sudoku, int y)        -> int;

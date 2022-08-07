@@ -1,8 +1,8 @@
 #include "sudoku_fitness.hpp"
 
-auto SudokuFitness::how_fit(Puzzle* puzzle) const -> int
+auto SudokuFitness::how_fit(const Puzzle* const puzzle) const -> int
 {
-    const auto sudoku = dynamic_cast<Sudoku*>(puzzle);
+    const auto sudoku = dynamic_cast<const Sudoku*>(puzzle);
     if (!sudoku) return Fitness::invalid; // invalid puzzle
 
     auto fitness = Fitness::perfect; // assume we start with solution

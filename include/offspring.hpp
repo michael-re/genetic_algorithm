@@ -9,7 +9,7 @@ class Offspring
 {
 public:
     virtual ~Offspring() = default;
-    virtual auto make_offspring(Puzzle* puzzle) const -> Puzzle* = 0;
+    virtual auto make_offspring(const Puzzle* const puzzle) const -> Puzzle* = 0;
 };
 
 #endif // !GA_OFFSPRING_HPP
