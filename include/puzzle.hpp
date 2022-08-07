@@ -8,7 +8,10 @@
 class Puzzle
 {
 public:
+    explicit Puzzle() = default;
     virtual ~Puzzle() = default;
+
+    virtual auto clone() const -> Puzzle* = 0;
 
     virtual auto read(std::istream& stream)        -> std::istream& = 0;
     virtual auto write(std::ostream& stream) const -> std::ostream& = 0;

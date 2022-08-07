@@ -3,7 +3,9 @@
 #ifndef GA_POPULATION_HPP
 #define GA_POPULATION_HPP
 
+
 #include <vector>
+#include <iostream>
 
 #include "puzzle.hpp"
 #include "fitness.hpp"
@@ -12,13 +14,28 @@
 class Population
 {
 public:
-    struct Individual
+    class Individual
     {
-        Puzzle* puzzle  = nullptr;
-        int     fitness = Fitness::invalid;
+    public:
+        Individual();
+        ~Individual();
 
-        Individual(Puzzle* puzzle = nullptr, int fitness = -1)
-            : puzzle(puzzle), fitness(fitness) {}
+        Individual(Individual&& other);
+        Individual(const Individual& other);
+
+        Individual(Puzzle* puzzle, int fitness);
+
+        auto operator=(Individual&& other)      -> Individual&;
+        auto operator=(const Individual& other) -> Individual&;
+
+        auto puzzle() const -> const Puzzle* const&;
+        auto fitness() const -> int;
+
+        friend auto operator<<(std::ostream& stream, const Individual& individual) -> std::ostream&;
+
+    private:
+        Puzzle* m_puzzle  = nullptr;
+        int     m_fitness = Fitness::invalid;
     };
 
     using size_t      = std::size_t;

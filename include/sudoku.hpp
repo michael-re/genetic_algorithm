@@ -28,6 +28,8 @@ public:
     auto cell(int x, int y)       -> Cell&;
     auto cell(int x, int y) const -> const Cell&;
 
+    auto clone() const -> Puzzle* override;
+
     auto read(std::istream &stream)        -> std::istream& override;
     auto write(std::ostream &stream) const -> std::ostream& override;
 

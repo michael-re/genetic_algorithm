@@ -14,6 +14,11 @@ auto Sudoku::cell(int x, int y) const -> const Cell&
     return m_board[x][y];
 }
 
+auto Sudoku::clone() const -> Puzzle*
+{
+    return new Sudoku(*this);
+}
+
 auto Sudoku::read(std::istream &stream) -> std::istream&
 {
     m_board = {};
