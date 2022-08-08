@@ -3,7 +3,6 @@
 #ifndef GA_POPULATION_HPP
 #define GA_POPULATION_HPP
 
-
 #include <vector>
 #include <iostream>
 
@@ -56,9 +55,11 @@ public:
 
     virtual auto cull(float percent) -> Population& = 0;
     virtual auto new_generation()    -> Population& = 0;
+    virtual auto make_source()       -> Population& = 0;
 
-    virtual auto best_fitness() const -> int = 0;
+    virtual auto best_fitness()    const -> int = 0;
     virtual auto best_individual() const -> const individual& = 0;
+    virtual auto source_puzzle()   const -> const individual& = 0;
 
 protected:
     size_t     m_size       = 0;
