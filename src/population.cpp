@@ -58,13 +58,14 @@ auto Population::Individual::fitness() const -> int
 
 auto operator<<(std::ostream& stream, const Population::Individual& individual) -> std::ostream&
 {
-    if (individual.fitness() == Fitness::perfect || individual.fitness() == Fitness::invalid)
+    if (!individual.puzzle()) return stream;
+
+    if (individual.fitness() == Fitness::solution || individual.fitness() == Fitness::invalid)
     {
         return stream << *individual.puzzle();
     }
     else
     {
-        return stream << "Fitness: " << individual.fitness()
-                      << *individual.puzzle();
+        return stream << "Fitness: " << individual.fitness() << *individual.puzzle();
     }
 }
