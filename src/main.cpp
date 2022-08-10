@@ -1,17 +1,20 @@
+#include <string>
 #include <iostream>
 
-#include "sudoku_factory.hpp"
-#include "sudoku_fitness.hpp"
-#include "population.hpp"
+#include "sudoku_population.hpp"
+#include "genetic_algorithm.hpp"
 
-auto main() -> int
+auto main(int argc, char* argv[]) -> int
 {
-    std::cout << "Enter sudoku puzzle: ";
-    
-    auto puzzle = SudokuFactory().create_puzzle(std::cin);
-    auto fitness = SudokuFitness().how_fit(puzzle);
-    auto individual = Population::Individual(puzzle, fitness);
+    if (argc != 3)
+    {
+        std::cout << "usage: " << argv[0] << "<population size> <max generation>" << std::endl;
+        return EXIT_FAILURE;
+    }
 
-    std::cout << individual << std::endl;
+    const auto cull = 0.90f;                // percent to cull during each iteration
+    const auto size = std::stoi(argv[1]);   // population size
+    const auto max  = std::stoi(argv[2]);   // max generations
+    GeneticAlgorithm<SudokuPopulation>::run(cull, size, max);
     return EXIT_SUCCESS;
 }

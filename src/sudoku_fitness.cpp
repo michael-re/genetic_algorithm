@@ -5,7 +5,7 @@ auto SudokuFitness::how_fit(const Puzzle* const puzzle) const -> int
     const auto sudoku = dynamic_cast<const Sudoku*>(puzzle);
     if (!sudoku) return Fitness::invalid; // invalid puzzle
 
-    auto fitness = Fitness::perfect; // assume we start with solution
+    auto fitness = Fitness::solution; // assume we start with solution
     for (int i = 0, x = 0, y = 0; i < Sudoku::board_width; i++, y += Sudoku::subgrid_size)
     {
         if (y && !(y % Sudoku::board_width))
