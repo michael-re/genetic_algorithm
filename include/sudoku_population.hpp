@@ -11,7 +11,6 @@ public:
     SudokuPopulation(size_t population_size);
     ~SudokuPopulation();
 
-    auto make_source()       -> Population& override;
     auto cull(float percent) -> Population& override;
     auto new_generation()    -> Population& override;
 

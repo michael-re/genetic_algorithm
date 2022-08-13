@@ -56,6 +56,16 @@ auto Population::Individual::fitness() const -> int
     return m_fitness;
 }
 
+auto Population::Individual::operator<(const Individual& other) const -> bool
+{
+    return m_fitness < other.m_fitness;
+}
+
+auto Population::Individual::operator>(const Individual& other) const -> bool
+{
+    return m_fitness > other.m_fitness;
+}
+
 auto operator<<(std::ostream& stream, const Population::Individual& individual) -> std::ostream&
 {
     if (!individual.puzzle()) return stream;

@@ -27,6 +27,9 @@ public:
         auto operator=(Individual&& other)      -> Individual&;
         auto operator=(const Individual& other) -> Individual&;
 
+        auto operator<(const Individual& other) const -> bool;
+        auto operator>(const Individual& other) const -> bool;
+
         auto puzzle() const -> const Puzzle* const&;
         auto fitness() const -> int;
 
@@ -55,7 +58,6 @@ public:
 
     virtual auto cull(float percent) -> Population& = 0;
     virtual auto new_generation()    -> Population& = 0;
-    virtual auto make_source()       -> Population& = 0;
 
     virtual auto best_fitness()    const -> int = 0;
     virtual auto best_individual() const -> const individual& = 0;
