@@ -23,6 +23,7 @@ public:
         Individual(const Individual& other);
 
         Individual(Puzzle* puzzle, int fitness);
+        Individual(Puzzle* puzzle, int fitness, int generation);
 
         auto operator=(Individual&& other)      -> Individual&;
         auto operator=(const Individual& other) -> Individual&;
@@ -30,14 +31,16 @@ public:
         auto operator<(const Individual& other) const -> bool;
         auto operator>(const Individual& other) const -> bool;
 
-        auto puzzle() const -> const Puzzle* const&;
-        auto fitness() const -> int;
+        auto puzzle()     const -> const Puzzle* const&;
+        auto fitness()    const -> int;
+        auto generation() const -> int;
 
         friend auto operator<<(std::ostream& stream, const Individual& individual) -> std::ostream&;
 
     private:
-        Puzzle* m_puzzle  = nullptr;
-        int     m_fitness = Fitness::invalid;
+        Puzzle* m_puzzle     = nullptr;
+        int     m_fitness    = Fitness::invalid;
+        int     m_generation = 0;
     };
 
     using size_t      = std::size_t;
@@ -65,6 +68,7 @@ public:
 
 protected:
     size_t     m_size       = 0;
+    size_t     m_generation = 0;
     factory*   m_factory    = nullptr;
     fitness*   m_fitness    = nullptr;
     individual m_source     = {};
