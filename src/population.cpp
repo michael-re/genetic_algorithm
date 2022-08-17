@@ -82,14 +82,15 @@ auto operator<<(std::ostream& stream, const Population::Individual& individual) 
 {
     if (!individual.puzzle()) return stream;
 
-    if (individual.fitness() == Fitness::solution || individual.fitness() == Fitness::invalid)
-    {
-        return stream << *individual.puzzle();
-    }
-    else
-    {
-        return stream << "Fitness:    "   << individual.fitness()
-                      << "\nGeneration: " << individual.generation()
-                      << *individual.puzzle();
-    }
+    stream << "Fitness:    " << individual.fitness();
+    if (individual.fitness() == Fitness::invalid)
+        stream << " - (invalid puzzle)";
+    else if (individual.fitness() == Fitness::solution)
+        stream << " - (solution)";
+
+    stream << "\nGeneration: " << individual.generation();
+    if (individual.generation() == -1)
+        stream << " (source puzzle)";
+
+    return stream << *individual.puzzle();
 }
