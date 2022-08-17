@@ -21,7 +21,7 @@ private:
     {
         auto sum = 0;
         for (const auto &val : container)
-            if (val > 1) sum += val * 2;
+            if (val > 1) sum += (val == 2) ? 2 : val * 2; 
         return sum;
     }
 };
