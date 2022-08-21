@@ -1,5 +1,5 @@
-CXX       = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra -Wpedantic
+CXX      = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra -Wpedantic -O3
 
 INCLUDE = -I include/
 SOURCE  = src/*.cpp
